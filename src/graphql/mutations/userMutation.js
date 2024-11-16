@@ -1,8 +1,9 @@
 import {gql} from '@apollo/client'
 
-export const REGISTER_USER= gql`
-    mutation($name: String!, $email: String!, phoneNo: String!, $isInvestor: Boolean!
-        createUser(name: $name,email: $email, phoneNo: $phoneNo){
+
+export const REGISTER_USER = gql`
+    mutation ($name: String!, $email: String!, $phoneNo: String!, $isInvestor: Boolean!) {
+        createUser(name: $name, email: $email, phoneNo: $phoneNo, isInvestor: $isInvestor) {
             id
             name
             email
@@ -12,7 +13,8 @@ export const REGISTER_USER= gql`
             refreshToken
         }
     }
-`
+`;
+
 export const GENERATE_TOKEN= gql`{
     mutation($refreshToken: String!){
         generateToken(refreshToken: $refreshToken){
