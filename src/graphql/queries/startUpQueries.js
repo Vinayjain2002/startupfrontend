@@ -1,0 +1,129 @@
+import {gql} from '@apollo/client'
+
+export const GET_ALL_STARTUPS= gql`
+    query{
+        getAllStartUps(){
+            startUpName
+            isRegistered
+            isVerified
+            founder
+            industry
+            location
+            description
+            logo
+            website
+        }
+    }
+`
+
+export const GET_STARTUP_BY_ID= gql`
+    query(id: ID!){
+        getStartUpbyId(id: $id){
+            startUpName
+            isRegistered
+            isVerified
+            founder{
+                name
+                email
+                bio
+                phoneNo
+                profilePicture
+            }
+            customerBase
+            investors{
+                investorId{
+                    name
+                    email
+                    profilePicture
+                }
+                investmentAmount
+                dateOfInvestment
+            }
+            fundingDetails{
+                totalFunding
+                fundingRound{
+                    roundName
+                    amountRaised
+                    date
+                    investors{
+                        name
+                        email
+                        profilePicture
+                    }
+                    investmentAmount
+                }
+            }
+            employees{
+                employeeId
+                role
+                salary
+                dateJoined
+            }
+            industry
+            location
+            description
+            logo
+            website
+            socialMediaLinks{
+                facebook
+                twitter
+                linkedin
+            }
+        }
+    }
+`
+
+export const NOT_FUNDED_STARTUP= gql`
+    query{
+        NotFundedStartUp(){
+            startUpName
+            isRegistered
+            isVerified
+            founder{
+                name
+                bio
+                profilePicture
+            }
+            customerBase
+            investors{
+                investorId{
+                        name
+                        email
+                        profilePicture
+                    }
+                    investmentAmount
+                    dateOfInvestment
+            }
+            fundingDetails{
+                 totalFunding
+                fundingRound{
+                    roundName
+                    amountRaised
+                    date
+                    investors{
+                        name
+                        email
+                        profilePicture
+                    }
+                    investmentAmount
+                }
+            }
+            employees{
+                employeeId
+                role
+                salary
+                dateJoined
+            }
+            industry
+            location
+            description
+            logo
+            website
+            socialMediaLinks{
+                facebook
+                twitter
+                linkedin
+            }
+        }
+    }
+`
