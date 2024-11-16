@@ -1,40 +1,41 @@
 import {gql} from '@apollo/client'
 
-export const getMessages=gql`{
-    query($chatId: ID!){
-        getMessages(chatId: $chatId){
-            sender{w
+export const SEND_MESSAGE= gql`
+    mutation($chatId: ID!){
+        sendMessage(chatId: $chatId){
+            sender{
                 name
-                email
                 profilePicture
+                email
                 bio
+                phoneNo
+                isInvestor
             }
             message
-            chatId{
+            chatId{ 
                 photo
                 chatName
                 isGroup
                 users{
                     name
-                    email
                     profilePicture
+                    email
                     bio
+                    phoneNo
+                    isInvestor
                 }
                 latestMessage{
                     sender{
                         name
-                        email
                         profilePicture
+                        email
+                        bio
+                        phoneNo
+                        isInvestor
                     }
                     message
-                }
-                groupAdmin{
-                    name
-                    email
-                    profilePicture
-                    bio
-                }
+                }  
             }
         }
     }
-}`
+`
